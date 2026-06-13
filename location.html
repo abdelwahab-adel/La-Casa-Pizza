@@ -9,6 +9,40 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=El+Messiri:wght@400;500;600;700&family=Marhey:wght@500;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
+<style>
+  .loc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .loc-grid {
+      grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column;
+    }
+    .loc-info-container {
+      order: 1;
+    }
+    .loc-map-container {
+      order: 2;
+      width: 100% !important;
+      margin-top: 32px;
+    }
+    .loc-map-container iframe {
+      height: 350px !important;
+      border-radius: 16px;
+    }
+    .loc-buttons {
+      flex-direction: column;
+    }
+    .loc-buttons .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
 </head>
 <body>
 
@@ -20,7 +54,6 @@
     <nav class="menu">
       <a href="index.html">الرئيسية</a>
       <a href="menu.html">القائمة</a>
-
       <a href="offers.html">العروض</a>
       <a href="reservations.html">الحجوزات</a>
       <a href="location.html" class="active">الموقع</a>
@@ -45,11 +78,21 @@
 
 <section class="section">
   <div class="wrap">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start" class="loc-grid">
+    <div class="loc-grid">
+      <!-- Info Container (Appears first on mobile) -->
+      <div class="loc-info-container">
+        <span class="eyebrow">العنوان والمواصلات</span>
+        <h2 class="display-2" style="margin-top:14px" id="loc-h2"></h2>
+        <div style="margin-top:28px;display:flex;flex-direction:column;gap:20px" id="loc-details"></div>
+        <div class="loc-buttons" style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-gold" id="loc-maps-btn" href="#" target="_blank" rel="noopener">افتح في خرائط جوجل<span class="arrow">←</span></a>
+          <a class="btn btn-ghost" id="loc-waze-btn" href="#" target="_blank" rel="noopener">افتح في Waze</a>
+        </div>
+      </div>
 
-      <!-- Map -->
-      <div>
-        <div style="border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.3)">
+      <!-- Map Container (Appears second on mobile) -->
+      <div class="loc-map-container">
+        <div style="border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.1)">
           <iframe
             loading="lazy"
             allowfullscreen
@@ -63,17 +106,6 @@
           <a href="https://maps.google.com/?q=30.0131,31.4747" target="_blank" rel="noopener" style="color:var(--saffron)">افتح في خرائط جوجل</a>
         </p>
       </div>
-
-      <!-- Info -->
-      <div>
-        <span class="eyebrow">العنوان والمواصلات</span>
-        <h2 class="display-2" style="margin-top:14px" id="loc-h2"></h2>
-        <div style="margin-top:28px;display:flex;flex-direction:column;gap:20px" id="loc-details"></div>
-        <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
-          <a class="btn btn-gold" id="loc-maps-btn" href="#" target="_blank" rel="noopener">افتح في خرائط جوجل<span class="arrow">←</span></a>
-          <a class="btn btn-ghost" id="loc-waze-btn" href="#" target="_blank" rel="noopener">افتح في Waze</a>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -86,21 +118,21 @@
       <h2 class="display-2" style="margin-top:14px">طريقك لكاسا بيتزا</h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;margin-top:40px">
-      <div class="js-reveal" style="background:var(--card);padding:28px;border-radius:12px">
+      <div class="js-reveal" style="background:#fff;padding:28px;border-radius:12px;border:1px solid var(--line)">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
           <div style="width:42px;height:42px;background:var(--saffron);color:var(--ink);border-radius:50%;display:grid;place-items:center;font-weight:700">N</div>
           <h4 style="margin:0">من وسط البلد / مدينة نصر</h4>
         </div>
         <p style="color:var(--muted);font-size:14px">طريق النصر ← الدائري الأوسطي ← مخرج التجمع الخامس. تقريبًا 25 دقيقة.</p>
       </div>
-      <div class="js-reveal" style="background:var(--card);padding:28px;border-radius:12px">
+      <div class="js-reveal" style="background:#fff;padding:28px;border-radius:12px;border:1px solid var(--line)">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
           <div style="width:42px;height:42px;background:var(--saffron);color:var(--ink);border-radius:50%;display:grid;place-items:center;font-weight:700">W</div>
           <h4 style="margin:0">من المهندسين / الدقي</h4>
         </div>
         <p style="color:var(--muted);font-size:14px">طريق الجيش ← الدائري الإقليمي ← مخرج التجمع. تقريبًا 35 دقيقة.</p>
       </div>
-      <div class="js-reveal" style="background:var(--card);padding:28px;border-radius:12px">
+      <div class="js-reveal" style="background:#fff;padding:28px;border-radius:12px;border:1px solid var(--line)">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
           <div style="width:42px;height:42px;background:var(--saffron);color:var(--ink);border-radius:50%;display:grid;place-items:center;font-weight:700">S</div>
           <h4 style="margin:0">من المعادي / حلوان</h4>
