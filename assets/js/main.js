@@ -1,5 +1,5 @@
 /* =============================================================
-   CASA PIZZA — Main JS (premium effects, navigation, animations)
+   La Casa Pizza — Main JS (premium effects, navigation, animations)
    ============================================================= */
 
 (function(){
@@ -173,7 +173,7 @@
   if(!document.querySelector(".fab-whats")){
     const fab = document.createElement("a");
     fab.className = "fab-whats";
-    fab.href = `https://wa.me/${R.whatsapp}?text=${encodeURIComponent("مرحبًا، أريد الاستفسار عن القائمة والطلب من كاسا بيتزا 🍕")}`;
+    fab.href = `https://wa.me/${R.whatsapp}?text=${encodeURIComponent("مرحبًا، أريد الاستفسار عن القائمة والطلب من لا كازا بيتزا 🍕")}`;
     fab.target = "_blank";
     fab.rel = "noopener";
     fab.setAttribute("aria-label", "تواصل واتساب");

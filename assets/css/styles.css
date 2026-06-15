@@ -1,5 +1,5 @@
 /* ============================================================
-   CASA PIZZA — Premium Restaurant Design System
+   La Casa Pizza — Premium Restaurant Design System
    World-class restaurant website · 2026 Edition
    ============================================================ */
 
@@ -1146,6 +1146,12 @@ html[dir="rtl"] .cart-panel{transform:translateX(-100%)}
 @media(max-width:768px){
   .menu-toolbar{position:relative;top:0}
   .search{flex:1}
+  .menu-toolbar .wrap{display: block;}
+    offers-strip section{
+display: flex;
+    flex-direction: column !important;
+
+    }
 }
 
 /* ---------- 28. Menu list (menu page) ---------- */

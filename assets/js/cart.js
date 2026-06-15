@@ -1,5 +1,5 @@
 /* =============================================================
-   CASA PIZZA — Cart System
+   La Casa Pizza — Cart System
    Side Drawer · WhatsApp Checkout · Quick View Modal
    ============================================================= */
 
@@ -492,7 +492,7 @@
       return;
     }
 
-    let msg = `*🍕 طلب جديد — كاسا بيتزا*\n`;
+    let msg = `*🍕 طلب جديد — لا كازا بيتزا*\n`;
     msg += `━━━━━━━━━━━━━━━━━\n\n`;
     let table = null;
     try { table = sessionStorage.getItem("casa_table"); } catch(e) {}
@@ -524,7 +524,7 @@
     msg += `💵 *الإجمالي: ${total} ${D.pizza.currency}*\n\n`;
     msg += `📍 سأرسل العنوان بعد تأكيد الطلب\n`;
     msg += `🕐 وقت التوصيل المتوقع: ${D.stats.deliveryTime} دقيقة\n\n`;
-    msg += `_تم الإرسال من موقع كاسا بيتزا 🌐_`;
+    msg += `_تم الإرسال من موقع لا كازا بيتزا 🌐_`;
 
     const url = `https://wa.me/${R.whatsapp}?text=${encodeURIComponent(msg)}`;
     window.open(url, "_blank");

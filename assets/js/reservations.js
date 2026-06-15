@@ -1,5 +1,5 @@
 /* =============================================================
-   كاسا بيتزا — Reservations with localStorage persistence
+   لا كازا بيتزا — Reservations with localStorage persistence
    ============================================================= */
 (function(){
   const STORE = "saffron_reservations_v1";
