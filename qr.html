@@ -148,101 +148,13 @@
 <script src="assets/js/main.js"></script>
 <script src="assets/js/cart.js"></script>
 <script>
-const tId = document.getElementById("t-id");
-const tLabel = document.getElementById("t-label");
-const tLang = document.getElementById("t-lang");
-const tCat = document.getElementById("t-cat");
-const linkOut = document.getElementById("link-out");
-const canvasBox = document.getElementById("qr-canvas");
-const previewId = document.getElementById("t-id-preview");
-const previewLabel = document.getElementById("t-label-preview");
-
-function menuBase(){
-  // Build an absolute link to this site's own menu page (works on whatever
-  // domain the site is deployed to), instead of a hard-coded foreign domain.
-  return location.origin + location.pathname.replace(/qr\.html(\?.*)?$/, "menu.html");
-}
-function buildUrl(){
-  const base = menuBase();
-  const p = new URLSearchParams({ t: tId.value || "T-00", lang: tLang.value, cat: tCat.value });
-  return base + "?" + p.toString();
-}
-let lastQR;
-function render(){
-  const url = buildUrl();
-  linkOut.textContent = url;
-  previewId.textContent = tId.value || "T-00";
-  previewLabel.textContent = tLabel.value || "—";
-  const qr = qrcode(0, "M");
-  qr.addData(url);
-  qr.make();
-  lastQR = qr;
-  // 6px module, padded
-  canvasBox.innerHTML = qr.createSvgTag({ scalable:true, cellSize:6, margin:8 });
-  canvasBox.querySelector("svg").style.cssText = "width:100%;height:100%;display:block;background:#fff";
-}
-[tId, tLabel, tLang, tCat].forEach(el => el.addEventListener("input", render));
-render();
-
-document.getElementById("dl-png").addEventListener("click", () => {
-  const svg = canvasBox.querySelector("svg");
-  if(!svg) return;
-  const xml = new XMLSerializer().serializeToString(svg);
-  const blob = new Blob([xml], {type:"image/svg+xml"});
-  const url = URL.createObjectURL(blob);
-  const img = new Image();
-  img.onload = () => {
-    const c = document.createElement("canvas");
-    c.width = 720; c.height = 720;
-    const ctx = c.getContext("2d");
-    ctx.fillStyle = "#fff"; ctx.fillRect(0,0,720,720);
-    ctx.drawImage(img, 0,0, 720, 720);
-    c.toBlob(b => {
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(b);
-      a.download = `qr-${tId.value || "table"}.png`;
-      a.click();
-      URL.revokeObjectURL(url);
-    });
-  };
-  img.src = url;
-  window.CasaToast && window.CasaToast("جارٍ تحضير الـ PNG...");
-});
-
-document.getElementById("dl-svg").addEventListener("click", () => {
-  const svg = canvasBox.querySelector("svg");
-  if(!svg) return;
-  const blob = new Blob([new XMLSerializer().serializeToString(svg)], {type:"image/svg+xml"});
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = `qr-${tId.value || "table"}.svg`;
-  a.click();
-});
-
-document.getElementById("copy-link").addEventListener("click", () => {
-  navigator.clipboard?.writeText(buildUrl()).then(()=> window.CasaToast && window.CasaToast("تم نسخ رابط القائمة", "success"));
-});
-
-// Existing tables — render small QR tiles for each
-const grid = document.getElementById("qr-tiles");
-const tables = window.SAFFRON_DATA.tables;
-
-document.getElementById("tables-count").textContent = `${tables.length} طاولات نشطة`;
-const totalScans = tables.reduce((s, t) => s + t.scans, 0);
-document.getElementById("tables-scans").textContent = `إجمالي ${totalScans.toLocaleString("en-US")} عملية مسح خلال آخر 30 يوماً`;
-
-grid.innerHTML = tables.map(t => {
-  const qr = qrcode(0, "M");
-  qr.addData(`${menuBase()}?t=${t.id}&lang=ar&cat=all`);
-  qr.make();
-  return `<div class="qr-tile">
-    <div class="mini">${qr.createSvgTag({ scalable:true, cellSize:4, margin:4 })}</div>
-    <div class="lbl">${t.label}</div>
-    <div class="scans">${t.scans}<small style="font-family:var(--font-body);font-size:11px;color:var(--muted);margin-inline-start:4px">مسحة هذا الشهر</small></div>
-  </div>`;
-}).join("");
-// shrink the inner svgs
-grid.querySelectorAll(".mini svg").forEach(s => s.style.cssText = "width:90%;height:90%;display:block;background:#fff;margin:auto");
+  // default date = today
+  const d = document.getElementById("r-date");
+  if(d){ const t = new Date(); t.setMinutes(t.getMinutes() - t.getTimezoneOffset()); d.value = t.toISOString().slice(0,10); d.min = d.value; }
+  // pseudo reservation no
+  const bk = document.getElementById("bk-no");
+  if(bk){ const n = String(Math.floor(100 + Math.random()*900)); bk.textContent = "RV-2026-0" + n; }
 </script>
+<script src="assets/js/reservations.js"></script>
 </body>
 </html>
