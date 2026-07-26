@@ -849,7 +849,11 @@ footer .social a:hover{background:var(--saffron);color:var(--ink);transform:tran
 
 /* ---------- 21. Page hero (sub pages) ---------- */
 .page-hero{
-  background:linear-gradient(135deg,var(--ink) 0%,var(--ink-3) 100%);
+  background: linear-gradient(180deg,rgba(16,14,11,.55) 0%,rgba(16,14,11,.85) 100%),
+    url("https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=700&q=80") center/cover no-repeat;
+
+
+  
   color:var(--cream);
   padding:100px 0 80px;position:relative;overflow:hidden;
 }
