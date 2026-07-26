@@ -177,7 +177,7 @@
     fab.target = "_blank";
     fab.rel = "noopener";
     fab.setAttribute("aria-label", "تواصل واتساب");
-    fab.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 3.5A11 11 0 0 0 3 17l-1 5 5-1A11 11 0 1 0 20 3.5zm-8 18a9 9 0 0 1-4.6-1.3l-.3-.2-3 .8.8-3-.2-.3A9 9 0 1 1 12 21.5zm5-6.7c-.3-.1-1.7-.8-2-1s-.5-.1-.7.2l-1 1c-.2.2-.3.2-.6.1a7 7 0 0 1-2-1.3 8 8 0 0 1-1.5-1.8c-.2-.3 0-.5.1-.6l.4-.5.3-.5c.1-.1 0-.3 0-.5l-1-2.3c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4a3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7s1.9 3 4.7 4.1c.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.1-1.4l-.5-.3z"/></svg>`;
+    fab.innerHTML = `<i style ="font-size: 20px;" class="fab fa-whatsapp" aria-hidden="true"></i>`;
     document.body.appendChild(fab);
   }
 

@@ -816,7 +816,7 @@ footer .social a:hover{background:var(--saffron);color:var(--ink);transform:tran
 /* ---------- 20. Floating WhatsApp ---------- */
 .fab-whats{
   position:fixed;bottom:24px;inset-inline-start:24px;z-index:90;
-  width:60px;height:60px;border-radius:50%;
+  width:45px;height:45px;border-radius:50%;
   background:#25D366;color:#fff;
   display:grid;place-items:center;
   box-shadow:0 12px 30px rgba(37,211,102,.45);

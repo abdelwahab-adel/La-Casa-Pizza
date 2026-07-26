@@ -96,7 +96,7 @@
         <div class="row discount" hidden><span>خصم الكوبون</span><span class="discount-amount">0 ج.م</span></div>
         <div class="row"><span>رسوم التوصيل</span><span class="delivery">${money(DELIVERY_FEE)}</span></div>
         <div class="row total"><span>الإجمالي</span><span class="grand">0 ج.م</span></div>
-        <button class="btn btn-gold btn-block btn-lg checkout" type="button">💬 إتمام عبر واتساب</button>
+        <button class="btn btn-gold btn-block btn-lg checkout" type="button"><i class="fab fa-whatsapp" aria-hidden="true"></i> إتمام عبر واتساب</button>
         <p style="font-size:11.5px;color:var(--muted);text-align:center;margin-top:10px">الحد الأدنى للطلب ${money(MIN_ORDER)} · التوصيل خلال 30-45 دقيقة</p>
       </div>
     </aside>`;
