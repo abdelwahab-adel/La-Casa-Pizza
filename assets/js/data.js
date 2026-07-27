@@ -121,11 +121,11 @@ window.SAFFRON_DATA = (() => {
       rating:4.8, reviews:445, tags:["veg"], featured:true },
     { id:42, cat:"drinks", name:"ليموناضة نعناع",
       desc:"ليمون طازج ونعناع وسكر — كوب 500 مل.",
-      price:55, img:"https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=600&q=80",
+      price:55, img:"assets/54950-طريقة-عمل-الليمون-بالنعناع-(3).webp",
       rating:4.7, reviews:398, tags:["veg"] },
     { id:43, cat:"drinks", name:"ماء معدني",
       desc:"زجاجة ماء معدني 500 مل.",
-      price:15, img:"https://images.unsplash.com/photo-1560023907-5f339617ea30?w=600&q=80",
+      price:15, img:"assets/01616199469.jpg",
       rating:4.2, reviews:201 },
 
 
@@ -232,7 +232,7 @@ window.SAFFRON_DATA = (() => {
       id:"OFR-FAM",
       title:"عرض البيتزا العائلية",
       desc:"بيتزتان عائليتان من أي نوع + 2 لتر بيبسي + خبز ثوم بالجبن مجانًا. وجبة مثالية لعائلة مكونة من 4–6 أفراد.",
-      img:"https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=900&q=80",
+      img:"https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80",
       originalPrice:820, finalPrice:549,
       discount:33, code:"FAMILY33",
       endsAt:"2026-08-31T23:59:00",
@@ -252,20 +252,10 @@ window.SAFFRON_DATA = (() => {
       id:"OFR-STU",
       title:"عرض الطلاب",
       desc:"خصم 15% على كل طلب بإثبات بطاقة الطالب. للطلاب من جميع الجامعات المصرية.",
-      img:"https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=900&q=80",
+      img:"assets/download (2).jpg",
       discount:15, code:"STUDENT15",
       endsAt:"2026-12-31T23:59:00",
       terms:"يستلزم إظهار بطاقة الطالب السارية. للطلب في الفرع فقط."
-    },
-    {
-      id:"OFR-LUNCH",
-      title:"عرض الغداء السريع",
-      desc:"بيتزا وسط من أي نوع + مشروب غازي أو عصير برتقال. غداء كامل في 25 دقيقة أو أقل.",
-      img:"https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80",
-      originalPrice:249, finalPrice:199,
-      discount:20, code:"LUNCH199",
-      endsAt:"2026-12-31T23:59:00",
-      terms:"يسري من 11 ص حتى 4 م فقط. طوال أيام الأسبوع."
     },
     {
       id:"OFR-BOGO",
@@ -301,7 +291,7 @@ window.SAFFRON_DATA = (() => {
       id:"OFR-BUY2",
       title:"اشترِ 2 واحصل على الثالثة مجاناً",
       desc:"اطلب أي طبقين من القائمة الرئيسية واحصل على الثالث مجاناً (الأقل سعراً). يسري على المقبلات والسلطات والمكرونة.",
-      img:"https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80",
+      img:"https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=700&q=80",
       discount:33,
       endsAt:"2026-12-31T23:59:00",
       badge:"قيمة أعلى",
