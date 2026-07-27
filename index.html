@@ -13,8 +13,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=El+Messiri:wght@400;500;600;700&family=Marhey:wght@500;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23C9A24E'/%3E%3Ctext x='32' y='44' font-family='serif' font-size='30' fill='%23100E0B' text-anchor='middle' font-weight='700'%3E🍕%3C/text%3E%3C/svg%3E">
 </head>
@@ -125,7 +123,7 @@
     <div class="center" style="margin-bottom:48px">
       <span class="eyebrow center">مميزاتنا</span>
       <h2 class="display-2" style="margin-top:14px">ليه تختار لا كازا بيتزا؟</h2>
-      <!-- <div class="orn"></div> -->
+      <!-- <div class="orn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2 5 5 1-4 4 1 6-4-3-4 3 1-6-4-4 5-1z"/></svg></div> -->
     </div>
     <div class="why-grid">
       <div class="why-card js-reveal">
@@ -192,7 +190,7 @@
       <span class="eyebrow center">الأكثر طلبًا</span>
       <h2 class="display-2" style="margin-top:14px">الأطباق اللي ناسنا بيطلبها دايمًا</h2>
       <p class="lead center" style="margin:18px auto 0">اختيارات ضيوفنا المفضلة — جرّبها وادعيلنا 😋</p>
-      <div class="orn"></div>
+      <!-- <div class="orn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2 5 5 1-4 4 1 6-4-3-4 3 1-6-4-4 5-1z"/></svg></div> -->
     </div>
     <div class="dish-grid" id="featured-grid"></div>
     <div class="center" style="margin-top:48px">
@@ -499,7 +497,7 @@
   const tg = document.getElementById("testi-grid");
   tg.innerHTML = D.reviews.map(r => `
     <article class="testi js-reveal">
-      <div class="stars">${"★".repeat(r.rating)}</div>
+      <!-- <div class="stars">${"★".repeat(r.rating)}</div> -->
       <p>${r.text}</p>
       <div class="who">
         <div><div class="n">${r.name}</div><div class="r">${r.role}</div></div>
