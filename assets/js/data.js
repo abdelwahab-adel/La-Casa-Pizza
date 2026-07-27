@@ -43,7 +43,7 @@ window.SAFFRON_DATA = (() => {
   ];
 
   /* ============================================================
-     الأصناف — 18 صنف في 6 أقسام
+     الأصناف — 26 صنف في 6 أقسام
      ============================================================ */
   const items = [
     // ---- المقبلات (6) ----
@@ -107,25 +107,25 @@ window.SAFFRON_DATA = (() => {
       rating:4.5, reviews:88, tags:["veg"] },
     { id:31, cat:"sides", name:"خبز بيتا بالثوم",
       desc:"4 قطع خبز بيتا محمص بزبدة الثوم والأعشاب الإيطالية.",
-      price:39, img:"assets/download.jpg",
+      price:39, img:"https://images.unsplash.com/photo-1619535860434-ba1d8fa12536?w=600&q=80",
       rating:4.4, reviews:122, tags:["veg"] },
 
     // ---- المشروبات (4) ----
     { id:40, cat:"drinks", name:"بيبسي / ميرندا / 7UP",
       desc:"مشروبات غازية باردة — علبة 330 مل.",
-      price:25, img:"assets/download (1).jpg",
+      price:25, img:"https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=600&q=80",
       rating:4.3, reviews:630 },
     { id:41, cat:"drinks", name:"عصير برتقال طازج",
       desc:"برتقال مصري معصور لحظياً — كوب 500 مل.",
-      price:55, img:"assets/2018_12_14_0_31_18_262.webp",
+      price:55, img:"https://images.unsplash.com/photo-1613478223719-2ab802602423?w=600&q=80",
       rating:4.8, reviews:445, tags:["veg"], featured:true },
     { id:42, cat:"drinks", name:"ليموناضة نعناع",
       desc:"ليمون طازج ونعناع وسكر — كوب 500 مل.",
-      price:55, img:"assets/54950-طريقة-عمل-الليمون-بالنعناع-(3).webp",
+      price:55, img:"https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=600&q=80",
       rating:4.7, reviews:398, tags:["veg"] },
     { id:43, cat:"drinks", name:"ماء معدني",
       desc:"زجاجة ماء معدني 500 مل.",
-      price:15, img:"assets/01616199469.jpg",
+      price:15, img:"https://images.unsplash.com/photo-1560023907-5f339617ea30?w=600&q=80",
       rating:4.2, reviews:201 },
 
 
@@ -252,7 +252,7 @@ window.SAFFRON_DATA = (() => {
       id:"OFR-STU",
       title:"عرض الطلاب",
       desc:"خصم 15% على كل طلب بإثبات بطاقة الطالب. للطلاب من جميع الجامعات المصرية.",
-      img:"assets/download (2).jpg",
+      img:"https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=900&q=80",
       discount:15, code:"STUDENT15",
       endsAt:"2026-12-31T23:59:00",
       terms:"يستلزم إظهار بطاقة الطالب السارية. للطلب في الفرع فقط."

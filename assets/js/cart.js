@@ -23,6 +23,17 @@
   } catch(e) {}
 
   /* -----------------------------------------------------------
+     WhatsApp receiving number — defaults to data.js, but can be
+     overridden from the admin dashboard (persisted so checkout
+     always sends orders to the currently configured number).
+     ----------------------------------------------------------- */
+  let waNumber = R.whatsapp;
+  try {
+    const savedWa = localStorage.getItem("casa_wa_override");
+    if(savedWa) waNumber = savedWa;
+  } catch(e) {}
+
+  /* -----------------------------------------------------------
      Coupon codes — validated against the live offers in data.js
      so the codes promoted on offers.html always work in the cart.
      Only whole-order discounts/free-delivery offers are eligible.
@@ -80,8 +91,18 @@
         <h3>🛒 السلة <span class="count">0</span></h3>
         <button class="cart-close" aria-label="إغلاق">×</button>
       </div>
-      <div class="cart-body"></div>
-      <div class="cart-foot">
+      <div class="cart-scroll">
+        <div class="cart-body"></div>
+        <div class="customer-info">
+          <div class="field">
+            <label>الاسم الكامل</label>
+            <input type="text" class="cust-name" placeholder="اسمك الكامل" autocomplete="name">
+          </div>
+          <div class="field cust-address-wrap">
+            <label>عنوان التوصيل</label>
+            <textarea class="cust-address" placeholder="المنطقة، الشارع، رقم العمارة والشقة، أقرب علامة مميزة" rows="2"></textarea>
+          </div>
+        </div>
         <div class="coupon-box">
           <div class="coupon-row">
             <input type="text" class="coupon-input" placeholder="هل لديك كود خصم؟" maxlength="20" dir="ltr" autocomplete="off">
@@ -92,6 +113,8 @@
             <button class="coupon-remove" type="button" aria-label="إزالة كود الخصم">×</button>
           </div>
         </div>
+      </div>
+      <div class="cart-foot">
         <div class="row"><span>المجموع الفرعي</span><span class="subtotal">0 ج.م</span></div>
         <div class="row discount" hidden><span>خصم الكوبون</span><span class="discount-amount">0 ج.م</span></div>
         <div class="row"><span>رسوم التوصيل</span><span class="delivery">${money(DELIVERY_FEE)}</span></div>
@@ -102,7 +125,7 @@
     </aside>`;
   document.body.appendChild(drawer);
 
-  fab.addEventListener("click", () => drawer.classList.add("open"));
+  fab.addEventListener("click", () => { drawer.classList.add("open"); syncAddressVisibility(); });
   drawer.querySelector(".cart-close").addEventListener("click", () => drawer.classList.remove("open"));
   drawer.addEventListener("click", (e) => { if(e.target === drawer) drawer.classList.remove("open"); });
 
@@ -119,6 +142,34 @@
   const couponAppliedBox = drawer.querySelector(".coupon-applied");
   const couponAppliedText = drawer.querySelector(".coupon-applied-text");
   const couponRemoveBtn = drawer.querySelector(".coupon-remove");
+  const custNameInput = drawer.querySelector(".cust-name");
+  const custAddressInput = drawer.querySelector(".cust-address");
+  const custAddressWrap = drawer.querySelector(".cust-address-wrap");
+
+  /* -----------------------------------------------------------
+     Customer name / delivery address — remembered across visits,
+     and the address field is hidden for dine-in (QR table) orders
+     since those don't need delivery.
+     ----------------------------------------------------------- */
+  try {
+    custNameInput.value = localStorage.getItem("casa_customer_name") || "";
+    custAddressInput.value = localStorage.getItem("casa_customer_address") || "";
+  } catch(e) {}
+
+  custNameInput.addEventListener("input", () => {
+    try { localStorage.setItem("casa_customer_name", custNameInput.value); } catch(e) {}
+  });
+  custAddressInput.addEventListener("input", () => {
+    try { localStorage.setItem("casa_customer_address", custAddressInput.value); } catch(e) {}
+  });
+
+  const getTable = () => {
+    try { return sessionStorage.getItem("casa_table"); } catch(e) { return null; }
+  };
+  const syncAddressVisibility = () => {
+    custAddressWrap.style.display = getTable() ? "none" : "flex";
+  };
+  syncAddressVisibility();
 
   /* -----------------------------------------------------------
      Coupon apply / remove
@@ -269,6 +320,7 @@
     window.CasaToast && window.CasaToast(`أُضيف ${line.name} للسلة`, "success");
     // Briefly open drawer
     drawer.classList.add("open");
+    syncAddressVisibility();
   };
 
   // Add menu item
@@ -295,7 +347,13 @@
     },
     // Get cart contents (for checkout page)
     getCart(){ return cart; },
-    clear(){ cart = []; save(); }
+    clear(){ cart = []; save(); },
+    // WhatsApp receiving number (used by the admin dashboard)
+    getWa(){ return waNumber; },
+    setWa(v){
+      waNumber = v;
+      try { localStorage.setItem("casa_wa_override", v); } catch(e) {}
+    }
   };
 
   /* -----------------------------------------------------------
@@ -492,11 +550,26 @@
       return;
     }
 
+    const table = getTable();
+    const custName = custNameInput.value.trim();
+    const custAddress = custAddressInput.value.trim();
+
+    if(!custName){
+      window.CasaToast && window.CasaToast("من فضلك اكتب اسمك أولاً", "error");
+      custNameInput.focus();
+      return;
+    }
+    if(!table && !custAddress){
+      window.CasaToast && window.CasaToast("من فضلك اكتب عنوان التوصيل", "error");
+      custAddressInput.focus();
+      return;
+    }
+
     let msg = `*🍕 طلب جديد — لا كازا بيتزا*\n`;
     msg += `━━━━━━━━━━━━━━━━━\n\n`;
-    let table = null;
-    try { table = sessionStorage.getItem("casa_table"); } catch(e) {}
+    msg += `👤 الاسم: *${custName}*\n`;
     if(table) msg += `🪑 رقم الطاولة: *${table}*\n\n`;
+    else msg += `📍 العنوان: ${custAddress}\n\n`;
     cart.forEach((l, i) => {
       const sz = l.size ? P.sizes.find(s => s.id === l.size) : null;
       msg += `*${i+1}.* ${l.name}\n`;
@@ -522,11 +595,10 @@
     }
     msg += `🏍️ التوصيل: *${deliveryFee === 0 ? "مجاني" : deliveryFee + " " + D.pizza.currency}*\n`;
     msg += `💵 *الإجمالي: ${total} ${D.pizza.currency}*\n\n`;
-    msg += `📍 سأرسل العنوان بعد تأكيد الطلب\n`;
     msg += `🕐 وقت التوصيل المتوقع: ${D.stats.deliveryTime} دقيقة\n\n`;
     msg += `_تم الإرسال من موقع لا كازا بيتزا 🌐_`;
 
-    const url = `https://wa.me/${R.whatsapp}?text=${encodeURIComponent(msg)}`;
+    const url = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
     window.open(url, "_blank");
   });
 

@@ -399,13 +399,13 @@
   document.getElementById("pz-wa-save").addEventListener("click", () => {
     const v = waInput.value.trim();
     if(!/^\d{8,15}$/.test(v)){
-      window.toast && window.toast("الرقم يجب أن يكون من 8 إلى 15 رقم بصيغة دولية بدون +");
+      window.CasaToast && window.CasaToast("الرقم يجب أن يكون من 8 إلى 15 رقم بصيغة دولية بدون +", "error");
       return;
     }
     window.SaffronCart?.setWa(v);
     document.getElementById("pz-wa-status").textContent = "✓ تم الحفظ — جميع الطلبات الجديدة ستذهب لهذا الرقم";
     document.getElementById("pz-wa-status").style.color = "#2E7D44";
-    window.toast && window.toast("تم تحديث رقم واتساب المستقبل");
+    window.CasaToast && window.CasaToast("تم تحديث رقم واتساب المستقبل", "success");
   });
 })();
 
@@ -499,15 +499,15 @@
         const d = loadRes();
         if(d[idx]) d[idx].status = sel.value;
         saveRes(d);
-        window.toast && window.toast("✓ تم تحديث حالة الحجز");
+        window.CasaToast && window.CasaToast("✓ تم تحديث حالة الحجز", "success");
       });
     });
     resSection.querySelectorAll(".res-delete").forEach(btn => {
       btn.addEventListener("click", () => {
         const idx = +btn.dataset.idx;
         const d = loadRes();
-        if(d[idx]){ d.splice(idx, 1); saveRes(d); renderResPanel(); window.toast && window.toast("تم حذف الحجز"); }
-        else { renderResPanel(); window.toast && window.toast("حُدِّثت البيانات"); }
+        if(d[idx]){ d.splice(idx, 1); saveRes(d); renderResPanel(); window.CasaToast && window.CasaToast("تم حذف الحجز", "success"); }
+        else { renderResPanel(); window.CasaToast && window.CasaToast("حُدِّثت البيانات", ""); }
       });
     });
     const clearBtn = document.getElementById("admin-res-clear");
@@ -520,7 +520,7 @@
     if(exportBtn){
       exportBtn.addEventListener("click", () => {
         const d = loadRes();
-        if(!d.length){ window.toast && window.toast("لا توجد بيانات للتصدير"); return; }
+        if(!d.length){ window.CasaToast && window.CasaToast("لا توجد بيانات للتصدير", "error"); return; }
         const headers = ["الرقم","الاسم","الهاتف","التاريخ","الوقت","الضيوف","المنطقة","الحالة","تاريخ الإنشاء"];
         const rows = d.map(r => [r.id,r.name,r.phone,r.date,r.time,r.guests,r.area,r.status,r.createdAt]);
         const csv = [headers,...rows].map(r => r.map(c => `"${(c||"").toString().replace(/"/g,'""')}"`).join(",")).join("\n");

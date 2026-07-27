@@ -170,10 +170,15 @@
      7. Floating WhatsApp button
      ----------------------------------------------------------- */
   const R = (window.SAFFRON_DATA && window.SAFFRON_DATA.restaurant) || {whatsapp:"201068300432"};
+  let fabWa = R.whatsapp;
+  try {
+    const savedWa = localStorage.getItem("casa_wa_override");
+    if(savedWa) fabWa = savedWa;
+  } catch(e) {}
   if(!document.querySelector(".fab-whats")){
     const fab = document.createElement("a");
     fab.className = "fab-whats";
-    fab.href = `https://wa.me/${R.whatsapp}?text=${encodeURIComponent("مرحبًا، أريد الاستفسار عن القائمة والطلب من لا كازا بيتزا 🍕")}`;
+    fab.href = `https://wa.me/${fabWa}?text=${encodeURIComponent("مرحبًا، أريد الاستفسار عن القائمة والطلب من لا كازا بيتزا 🍕")}`;
     fab.target = "_blank";
     fab.rel = "noopener";
     fab.setAttribute("aria-label", "تواصل واتساب");

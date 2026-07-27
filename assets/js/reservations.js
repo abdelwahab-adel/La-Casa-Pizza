@@ -42,7 +42,7 @@
     data.push(reservation);
     save(data);
 
-    window.toast && window.toast("✓ تم تأكيد طلب الحجز — سيصلك تأكيد واتساب خلال 5 دقائق");
+    window.CasaToast && window.CasaToast("✓ تم تأكيد طلب الحجز — سيصلك تأكيد واتساب خلال 5 دقائق", "success");
     form.reset();
     currentId = genId();
     if(bkNo) bkNo.textContent = currentId;

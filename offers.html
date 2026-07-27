@@ -3,12 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>التواصل — لا كازا بيتزا | La Casa Pizza Contact</title>
-<meta name="description" content="تواصل مع لا كازا بيتزا — واتساب، تليفون، إيميل، أو زيارة الفروع. دعم 24/7.">
+<title>العروض — لا كازا بيتزا | La Casa Pizza Offers</title>
+<meta name="description" content="أحدث عروض لا كازا بيتزا: خصومات، عروض العائلة، الطلاب، والعملاء الجدد. اطلب الآن واستفد بأفضل الأسعار.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=El+Messiri:wght@400;500;600;700&family=Marhey:wght@500;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23C9A24E'/%3E%3Ctext x='32' y='42' font-family='serif' font-size='34' fill='%23100E0B' text-anchor='middle' font-weight='700'%3Eز%3C/text%3E%3C/svg%3E">
@@ -169,28 +168,6 @@
 <script src="assets/js/data.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/cart.js"></script>
-<script>
-(function(){
-  const R = window.SAFFRON_DATA.restaurant;
-  document.getElementById("util-addr").innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> ${R.address}`;
-  document.getElementById("util-phone").innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg> ${R.phoneDisplay}`;
-  document.getElementById("util-hours").innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ${R.hours}`;
-
-  document.getElementById("whatsapp-link").href = `https://wa.me/${R.whatsapp}`;
-  document.getElementById("whatsapp-display").textContent = R.phoneDisplay;
-  document.getElementById("phone-link").href = `tel:${R.phone}`;
-  document.getElementById("phone-display").textContent = R.phoneDisplay;
-  document.getElementById("email-link").href = `mailto:${R.email}`;
-  document.getElementById("email-display").textContent = R.email;
-  document.getElementById("addr-display").textContent = R.addressFull;
-  document.getElementById("hours-display").innerHTML = `الأحد – الخميس: ${R.hours}<br>الجمعة – السبت: ${R.hoursWeekend}`;
-
-  document.getElementById("footer-about").textContent = `بيتزا إيطالية حقيقية في ${R.address}. منذ ${R.since}.`;
-  document.getElementById("footer-contact-list").innerHTML = `<li>${R.addressFull}</li><li><a href="tel:${R.phone}">${R.phoneDisplay}</a></li><li><a href="mailto:${R.email}">${R.email}</a></li>`;
-  document.getElementById("hours-weekday").textContent = R.hours;
-  document.getElementById("hours-weekend").textContent = R.hoursWeekend;
-})();
-</script>
 <script>
   const D = window.SAFFRON_DATA;
   const grid = document.getElementById("offers-grid");

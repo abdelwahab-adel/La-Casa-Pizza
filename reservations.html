@@ -65,8 +65,8 @@
       <p class="lead" style="margin-top:8px">جميع الحقول مطلوبة، ما لم يُذكر خلاف ذلك.</p>
 
       <div class="row">
-        <div class="field"><label>الاسم الكامل</label><input type="text" name="r-name" required placeholder="مثال: عبدالعزيز الشمري"></div>
-        <div class="field"><label>رقم الجوال</label><input type="tel" name="r-phone" required placeholder="05X XXX XXXX" pattern="^05[0-9]{8}$"></div>
+        <div class="field"><label>الاسم الكامل</label><input type="text" name="r-name" required placeholder="مثال: أحمد محمد السيد"></div>
+        <div class="field"><label>رقم الموبايل</label><input type="tel" name="r-phone" required placeholder="01X XXXX XXXX" pattern="^01[0125][0-9]{8}$"></div>
       </div>
 
       <div class="row">
@@ -146,9 +146,9 @@
     <circle cx="12" cy="12" r="10"/>
     <path d="M9 9l6 6M15 9l-6 6"/>
 </svg>
-          <div><span class="label">الإلغاء</span><span class="value">مجاني قبل 3 ساعات من الموعد، بعدها رسم رمزي 50 ر.س</span></div></li>
+          <div><span class="label">الإلغاء</span><span class="value">مجاني قبل 3 ساعات من الموعد، بعدها رسم رمزي 50 ج.م</span></div></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <div><span class="label">العنوان</span><span class="value">طريق الأمير تركي الأول، التجمع الخامس، القاهرة 12512</span></div></li>
+          <div><span class="label">العنوان</span><span class="value">3 شارع البنوك، التجمع الخامس، القاهرة الجديدة، القاهرة 11835</span></div></li>
       </ul>
     </aside>
   </div>
@@ -227,14 +227,6 @@
 <script src="assets/js/data.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/cart.js"></script>
-<script>
-  // default date = today
-  const d = document.getElementById("r-date");
-  if(d){ const t = new Date(); t.setMinutes(t.getMinutes() - t.getTimezoneOffset()); d.value = t.toISOString().slice(0,10); d.min = d.value; }
-  // pseudo reservation no
-  const bk = document.getElementById("bk-no");
-  if(bk){ const n = String(Math.floor(100 + Math.random()*900)); bk.textContent = "RV-2026-0" + n; }
-</script>
 <script src="assets/js/reservations.js"></script>
 </body>
 </html>
