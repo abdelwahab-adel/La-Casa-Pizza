@@ -394,6 +394,7 @@ html[dir="rtl"] .mobile-drawer-panel{transform:translateX(100%)}
   .hero .wrap{grid-template-columns:1fr;gap:40px}
   .hero-meta{grid-template-columns:repeat(3,1fr);gap:12px}
   .hero-meta .k{font-size:1.8rem}
+  .hero-card{display: none;}
 }
 
 /* ---------- 10. Stats counters ---------- */
